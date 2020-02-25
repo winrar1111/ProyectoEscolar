@@ -18,7 +18,8 @@ namespace WebApplication6.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private static int idaux = 0;
+        private static string emailaux ;
         public AccountController()
         {
         }
@@ -139,9 +140,12 @@ namespace WebApplication6.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register(int? id)
+        public ActionResult Register(int? id, int idEmpleado,string email, RegisterViewModel model)
         {
-            ViewBag.Id_Empleado = new SelectList(db.TbEmpleado, "Id", "Codigo_Empleado");
+            idaux = idEmpleado;
+            emailaux = email;
+;
+            model.Email = emailaux;
             ViewBag.Rol = new SelectList(db.Roles, "Id", "Name");
             return View();
         }
@@ -153,10 +157,14 @@ namespace WebApplication6.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string Rol)
         {
+            model.Email = emailaux;
 
             if (ModelState.IsValid)
             {
+                model.Id_Empleado = idaux;
+
                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Id_Empleado=model.Id_Empleado };
+                user.Fecha_Conexcion = DateTime.Now;
                var result = await UserManager.CreateAsync(user, model.Password);
                 var namerol = db.Roles.Find(Rol);
                 var guardar = UserManager.AddToRole(user.Id,namerol.Name);
@@ -174,7 +182,7 @@ namespace WebApplication6.Controllers
                 }
                 AddErrors(result);
             }
-
+            ViewBag.Rol = new SelectList(db.Roles, "Id", "Name");
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }

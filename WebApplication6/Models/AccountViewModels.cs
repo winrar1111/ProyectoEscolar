@@ -6,7 +6,7 @@ namespace WebApplication6.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
     }
@@ -65,7 +65,6 @@ namespace WebApplication6.Models
 
     public class RegisterViewModel
     {
-        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
@@ -84,7 +83,6 @@ namespace WebApplication6.Models
         [ForeignKey("Id_Empleado")]
         public Empleado Empleado { get; set; }
         [Display(Name = "Codigo Empleado")]
-        [Required]
         public int Id_Empleado { get; set; }
     }
 

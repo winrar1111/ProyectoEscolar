@@ -71,11 +71,24 @@ namespace WebApplication6.Models
         public DbSet<CursoEstudiantes> CursoEstudiantes{ get; set; }
 
         public  DbSet<OpcionesDeColegio>  OpcionesDeColegios  { get; set; }
+
+        public DbSet<Modalidades> Modalidades { get; set; }
+
+        public DbSet<Notas> Notas { get; set; }
+
+        public DbSet<Evaluaciones> Evaluaciones { get; set; }
+
+        public DbSet<EvaluacionesEstudiantes> EvaluacionesEstudiantes { get; set; }
+        public DbSet<PeriodosEscolares> PeriodosEscolares { get; set; }
+
+        public DbSet<CalendarioCurso> CalendarioCursos { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
         public System.Data.Entity.DbSet<WebApplication6.Models.Secciones> Secciones { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication6.Models.EmpleadoCalendario> EmpleadoCalendarios { get; set; }
     }
 }

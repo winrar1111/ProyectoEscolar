@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication6.Models.Evaluaciones>
+
+<div class="container">
+    <hr />
+    <div class="jumbotron">
+        <h1 class="">Evaluaciones del Curso</h1>
+        <p>Primero se si tienen que valorar las evaluaciones</p>
+    </div>
+    <p>
+        @Html.ActionLink("Crear Evaluaciones", "Create",null,new { @class="btn btn-success"})
+    </p>
+    <div class="table-responsive table-hover">
+        <table class="table">
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(model => model.Materias.Codigo_Materia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_Comienzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha_Final)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </th>
+                <th>Opciones</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Materias.Codigo_Materia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha_Comienzo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha_Final)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotal)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Valorar", "AprobarCurso", new { id = item.Id_Evaluacion },new { @class="btn btn-outline-info",data_modal=""}) 
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>

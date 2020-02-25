@@ -17,7 +17,7 @@ namespace WebApplication6.Controllers
         // GET: Secciones
         public ActionResult Index()
         {
-            ViewBag.SeccionMax = db.OpcionesDeColegios.FirstOrDefault().MaximoEstudiantes;
+            ViewBag.SeccionMax =0+ db.OpcionesDeColegios.FirstOrDefault().MaximoEstudiantes;
             return View(db.Secciones.ToList());
         }
 

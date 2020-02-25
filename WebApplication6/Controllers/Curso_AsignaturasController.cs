@@ -25,7 +25,7 @@ namespace WebApplication6.Controllers
                 var tbCursoAsignaturas = db.tbCursoAsignaturas.Include(c => c.CursoEscolar).Include(c => c.Empleado).Include(c => c.Materias).Where(x => x.Id_Curso == IdCurso);
                 ViewBag.NombreCurso = db.tbCursoEscolar.Find(IdCurso).NombredeCurso;
                 ViewBag.Id_Curso = IdCurso;
-                return PartialView(await tbCursoAsignaturas.ToListAsync());
+                return PartialView(tbCursoAsignaturas.ToList());
             }
             else
             {
@@ -34,21 +34,6 @@ namespace WebApplication6.Controllers
             }
 
 
-        }
-
-        // GET: Curso_Asignaturas/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Curso_Asignaturas curso_Asignaturas = await db.tbCursoAsignaturas.FindAsync(id);
-            if (curso_Asignaturas == null)
-            {
-                return HttpNotFound();
-            }
-            return View(curso_Asignaturas);
         }
 
         // GET: Curso_Asignaturas/Create
@@ -86,49 +71,8 @@ namespace WebApplication6.Controllers
                 curso_Asignaturas.Id_Curso = idCurso;
                 db.tbCursoAsignaturas.Add(curso_Asignaturas);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index", "CursoEscolars");
+                return RedirectToAction("Details", "CursoEscolars",new { id=curso_Asignaturas.Id_Curso});
             }
-
-            ViewBag.Id_Curso = new SelectList(db.tbCursoEscolar, "Id_Curso", "NombredeCurso", curso_Asignaturas.Id_Curso);
-            ViewBag.Id_Empleado = new SelectList(db.TbEmpleado, "Id", "Nombre", curso_Asignaturas.Id_Empleado);
-            ViewBag.Id_Materia = new SelectList(db.tbmaterias, "Id", "Nombre_Materia", curso_Asignaturas.Id_Materia);
-            return View(curso_Asignaturas);
-        }
-
-        // GET: Curso_Asignaturas/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Curso_Asignaturas curso_Asignaturas = await db.tbCursoAsignaturas.FindAsync(id);
-            if (curso_Asignaturas == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Id_Curso = new SelectList(db.tbCursoEscolar, "Id_Curso", "NombredeCurso", curso_Asignaturas.Id_Curso);
-            ViewBag.Id_Empleado = new SelectList(db.TbEmpleado, "Id", "Nombre", curso_Asignaturas.Id_Empleado);
-            ViewBag.Id_Materia = new SelectList(db.tbmaterias, "Id", "Nombre_Materia", curso_Asignaturas.Id_Materia);
-            return View(curso_Asignaturas);
-        }
-
-        // POST: Curso_Asignaturas/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id_Curso_Asignatura,Id_Curso,Id_Materia,Id_Empleado")] Curso_Asignaturas curso_Asignaturas)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(curso_Asignaturas).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.Id_Curso = new SelectList(db.tbCursoEscolar, "Id_Curso", "NombredeCurso", curso_Asignaturas.Id_Curso);
-            ViewBag.Id_Empleado = new SelectList(db.TbEmpleado, "Id", "Nombre", curso_Asignaturas.Id_Empleado);
-            ViewBag.Id_Materia = new SelectList(db.tbmaterias, "Id", "Nombre_Materia", curso_Asignaturas.Id_Materia);
             return View(curso_Asignaturas);
         }
 
@@ -139,7 +83,7 @@ namespace WebApplication6.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Curso_Asignaturas curso_Asignaturas = await db.tbCursoAsignaturas.Include(x=>x.Materias).FirstAsync();
+            Curso_Asignaturas curso_Asignaturas = await db.tbCursoAsignaturas.Include(x=>x.Materias).Include(x=>x.CursoEscolar).FirstAsync();
             if (curso_Asignaturas == null)
             {
                 return HttpNotFound();
@@ -155,7 +99,7 @@ namespace WebApplication6.Controllers
             Curso_Asignaturas curso_Asignaturas = await db.tbCursoAsignaturas.FindAsync(id);
             db.tbCursoAsignaturas.Remove(curso_Asignaturas);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "CursoEscolars", new { id = curso_Asignaturas.Id_Curso });
         }
 
         protected override void Dispose(bool disposing)
@@ -172,5 +116,6 @@ namespace WebApplication6.Controllers
             var empleados = db.tbEmpleadoMaterias.Include(x => x.Empleado).Where(x => x.Id_Materia == IdMateria).ToList();
             return Json(empleados);
         }
+
     }
 }

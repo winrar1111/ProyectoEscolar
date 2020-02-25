@@ -17,5 +17,7 @@ namespace WebApplication6.viewModels
         public List<ControlDisciplinario> controlDisciplinarios{ get; set; }
 
         public List<CursoEscolar> CursoEscolars { get; set; }
+
+        public List<CursoEstudiantes> CursoEstudiantes { get; set; }
     }
 }

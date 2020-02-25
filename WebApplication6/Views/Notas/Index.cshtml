@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WebApplication6.Models.Notas>
+
+@{
+
+}
+
+    <div class="container">
+        <hr />
+        <h2 class="text-center alert-success alert"> Notas del Curso @ViewBag.nom</h2>
+        @Html.ActionLink("Administrar Evaluaciones", "Index", "Evaluaciones", new { idCurso =Convert.ToInt32(ViewBag.Id) }, new { @class = "btn btn-outline-info" })
+
+        <a class="btn btn-primary mx-2" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Buscar Estudiante</a>
+
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+                <div class="container-fluid">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+
+                                <div class="col-md-10 row">
+                                    <dl class="mr-3">
+                                        <dt>
+                                            <label>
+                                                Materia
+                                            </label>
+                                        </dt>
+                                        <dd>
+                                            <select class="form-control" name="NumMateria" id="NumMateria">
+                                                <option selected value="">--Seleccione una materia--</option>
+                                            </select>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <input type="submit" name="name" class="btn btn-block btn-warning" value="Buscar" />
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Curso_Asignaturas.Materias.Nombre_Materia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estudiantes.NombreCompleto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nota1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nota2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nota3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nota4)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.promedio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bl_Aprobado)
+                    </th>
+                    <th>
+                        Evaluaciones
+                    </th>
+                    <th>Opciones</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Curso_Asignaturas.Materias.Nombre_Materia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estudiantes.NombreCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nota1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nota2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nota3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nota4)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.promedio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bl_Aprobado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Evaluaciones", "Index", "EvaluacionesEstudiantes", new { idEst = item.Id_Estudiante,idCursoA=item.Curso_Asignaturas.Id_Curso_Asignatura}, new { @class = "btn btn-outline-info" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Id_Nota })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script language="JavaScript" type="text/javascript">
+            var url = "@Url.Action("Materias","Notas")";
+            //pasar los datos al post
+            $.post(url).done(function (data) {
+                //se ejecutara si fue un exito
+                $("#NumMateria").html(data);
+                $.each(data, function (key, data) {
+                    $("#NumMateria").append('<option value=' + data.Id_Materia + '>' + data.Materias.Nombre_Materia + '</option>');
+                });
+            });
+</script>

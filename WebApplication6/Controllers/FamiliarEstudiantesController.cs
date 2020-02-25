@@ -66,11 +66,12 @@ namespace WebApplication6.Controllers
             if (ModelState.IsValid)
             {
                 familiarEstudiante.Id_Estudiante = Convert.ToInt32(id);
+                familiarEstudiante.BL_Estado_Familiar=true;
                 var exist = db.FamiliarEstudiantes.Where(x => x.Id_Estudiante == id).Where(x => x.BL_Responsable == true).ToList();
                 if (exist.Count == 0)
                 {
                     db.FamiliarEstudiantes.Add(familiarEstudiante);
-                    db.SaveChanges();
+                    db.SaveChangesAsync();
                     return RedirectToAction("Index", new { id = familiarEstudiante.Id_Estudiante });
                 }
                 else if (familiarEstudiante.BL_Responsable==false)

@@ -14,6 +14,9 @@ namespace WebApplication6.Models
 
         public int RegistrosPorPagina { get; set; }
 
+        public string Vista { get; set; }
+
+        public int Controller { get; set; }
         public RouteValueDictionary ValoresQueryString { get; set; }
     }
 }

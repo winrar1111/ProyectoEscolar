@@ -17,5 +17,8 @@ namespace WebApplication6.Models
         [Display(Name ="Nombre del Colegio")]
         public string NombreColegio { get; set; }
 
+
+    
+
     }
 }

@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using WebApplication6.Models;
 using WebApplication6.viewModels;
 
+
 namespace WebApplication6.Controllers
 {
     public class ControlDisciplinariosController : Controller
@@ -19,13 +20,14 @@ namespace WebApplication6.Controllers
         private static int auxid = 0;
 
         // GET: ControlDisciplinarios
-        public ActionResult Index(string MesFiltro, string AnioFiltro,int id=0, int pagina = 1)
+        public ActionResult Index(string MesFiltro, string AnioFiltro,int id, int pagina = 1)
         {
             var cantidadRegistrosPorPagina = 8;
             auxid = id;
             ViewBag.id = id;
             var usuario = db.Users.Find(User.Identity.GetUserId());
             bool respues = Validador.PuedeEntrar(usuario.Id,"Ver Historial Diciplinario");
+
             if (respues == true)
             {
                 if (TempData["SuccessDelete"] != null)
@@ -43,14 +45,43 @@ namespace WebApplication6.Controllers
 
                 if (ViewBag.ErrorFiltro == false || ViewBag.ErrorFiltro == null)
                 {
+                    int mes = 0;
+                    if (!string.IsNullOrEmpty(MesFiltro))
+                    {
+                        mes = Convert.ToInt32(MesFiltro);
+                    }
+
+                    var ListaDisciplinaria = db.tbcontrolDisciplinario.Include(x => x.Estudiantes).Include(x => x.IdentityUser.Empleado).WhereIf(id != 0, x => x.Id_Estudiantes == id)
+                      .WhereIf(mes!=0,x=>x.Fecha_Emision.Month==mes)
+                      .WhereIf(!string.IsNullOrEmpty(AnioFiltro),x=>x.Fecha_Emision.Year.ToString()==AnioFiltro)
+                     .OrderByDescending(x => x.Fecha_Emision)
+                     .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                     .Take(cantidadRegistrosPorPagina).ToList();
+
+                    var totalDeRegistros = db.tbcontrolDisciplinario.WhereIf(!string.IsNullOrEmpty(id.ToString()), x => x.Id_Estudiantes == id)
+                      .WhereIf(!string.IsNullOrEmpty(MesFiltro), x => x.Fecha_Emision.Month == mes)
+                      .WhereIf(!string.IsNullOrEmpty(AnioFiltro), x => x.Fecha_Emision.Year.ToString() == AnioFiltro).Count();
+                    var modelo = new IndexViewModel2();
+                    modelo.controlDisciplinarios = ListaDisciplinaria;
+                    modelo.PaginaActual = pagina;
+                    modelo.TotalRegistros = totalDeRegistros;
+                    modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+                    if (!string.IsNullOrEmpty(id.ToString())&&id!=0)
+                    {
+                        ViewBag.ModeloEstudiante = true;
+                        ViewBag.name = db.tbestudiantes.Find(id).Nombre + " " + db.tbestudiantes.Find(id).Apellido;
+                    }
+
+                    return View(modelo);
+                    /*
                     //FILTROS CON ESTUDIANTES
                     if (id != 0)
                     {
                         //FILTRO DE SOLO ESTUDIANTE
                         if (AnioFiltro == null && MesFiltro == null)
                         {
-                            //filtro de solo estudiante
-                            var ListaDisciplinaria = db.tbcontrolDisciplinario.Include(x => x.Estudiantes).Include(x => x.IdentityUser.Empleado).Where(x => x.Id_Estudiantes == id).OrderByDescending(x => x.Fecha_Emision)
+                            //filtro de solo estudiante!
+                            var ListaDisciplinaria = db.tbcontrolDisciplinario.Include(x => x.Estudiantes).Include(x => x.IdentityUser.Empleado).WhereIf(!string.IsNullOrEmpty(id.ToString()),x => x.Id_Estudiantes == id).OrderByDescending(x => x.Fecha_Emision)
                             .Skip((pagina - 1) * cantidadRegistrosPorPagina)
                              .Take(cantidadRegistrosPorPagina).ToList();
 
@@ -315,7 +346,7 @@ namespace WebApplication6.Controllers
                         modelo.TotalRegistros = totalDeRegistros;
                         modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
                         return View(modelo);
-                    }
+                    }*/
                 }
             }
             else

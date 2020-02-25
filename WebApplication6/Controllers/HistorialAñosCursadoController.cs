@@ -17,11 +17,12 @@ namespace WebApplication6.Controllers
         private static int estid = 0;
 
         // GET: HistorialAñosCursado
-        public ActionResult Index(int id, int? id_est)
+        public ActionResult Index(int id, int id_est)
         {
             auxid = id;
-            estid = Convert.ToInt32(id_est);
-            ViewBag.Id = estid;
+            estid = id_est;
+            ViewBag.Id = id;
+            ViewBag.nom = db.tbestudiantes.Find(id_est).NombreCompleto;
             var tbHistorialAniosCursado = db.tbHistorialAniosCursado.Include(h => h.AniosACursar).Include(h => h.HistorialAcademico).Include(h=>h.HistorialAcademico.Estudiantes).Where(x => x.Id_Escuela== id);
             return View(tbHistorialAniosCursado.ToList());
         }

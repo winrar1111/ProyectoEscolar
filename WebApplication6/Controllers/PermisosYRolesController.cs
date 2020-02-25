@@ -35,7 +35,20 @@ namespace WebApplication6.Controllers
         // GET: PermisosYRoles/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Permiso = new SelectList(db.tbPermisos, "Id_Permiso", "NombrePermiso");
+            List<PermisosYRoles> permisosDeRol = db.tbpermisosyroles.Where(x => x.Id_Rol == IdRol).ToList();
+            List<Permisos> permisostotales = db.tbPermisos.ToList();
+            List<Permisos> permisosFinal= db.tbPermisos.ToList();
+            foreach (var item in permisostotales)
+            {
+                foreach (var item2 in permisosDeRol)
+                {
+                    if (item.Id_Permiso == item2.Id_Permiso)
+                    {
+                        permisosFinal.Remove(item);
+                    }
+                }
+            }
+            ViewBag.Id_Permiso = new SelectList(permisosFinal, "Id_Permiso", "NombrePermiso");
             ViewBag.Id_Rol = new SelectList(db.Roles, "Id", "Name");
             return View();
         }
@@ -54,6 +67,20 @@ namespace WebApplication6.Controllers
                     return RedirectToAction("Index","Roles", new { id = IdRol }) ;
                 }
 
+                List<PermisosYRoles> permisosDeRol = db.tbpermisosyroles.Where(x => x.Id_Rol == IdRol).ToList();
+                List<Permisos> permisostotales = db.tbPermisos.ToList();
+                List<Permisos> permisosFinal = db.tbPermisos.ToList();
+                foreach (var item in permisostotales)
+                {
+                    foreach (var item2 in permisosDeRol)
+                    {
+                        if (item.Id_Permiso == item2.Id_Permiso)
+                        {
+                            permisosFinal.Remove(item);
+                        }
+                    }
+                }
+                ViewBag.Id_Permiso = new SelectList(permisosFinal, "Id_Permiso", "NombrePermiso");
                 return View(permisosYRoles);
 
 

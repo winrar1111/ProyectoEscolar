@@ -25,7 +25,7 @@ namespace WebApplication6.Controllers
             bool respues= Validador.PuedeEntrar(usuario.Id,"Ver Años");
             if (respues==true)
             {
-                var cantidadRegistrosPorPagina = 8;
+                var cantidadRegistrosPorPagina = 10;
                 if (TempData["SuccessDelete"] != null)
                 {
                     ViewBag.SuccessDelete = true;
@@ -66,7 +66,7 @@ namespace WebApplication6.Controllers
                 return View(modelo2);
             }
       
-            return RedirectToRoute("EjemploHome");
+          return RedirectToRoute("EjemploHome");
         }
 
         // GET: AniosACursars/Details/5

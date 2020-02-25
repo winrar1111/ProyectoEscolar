@@ -12,9 +12,10 @@ namespace WebApplication6.Models
         [Key]
         public int Id_Curso { get; set; }
 
-        [Required(ErrorMessage = "La {0} es un campo obligatorio")]
-        [Display(Name = "Modalidad")]
-        public string Str_Modalidad { get; set; }
+        [ForeignKey("Id_Modalidad")]
+        public Modalidades Modalidades{ get; set; }
+
+        public int Id_Modalidad { get; set; }
 
         [Display(Name ="Nombre del curso")]
         public string NombredeCurso { get; set; }

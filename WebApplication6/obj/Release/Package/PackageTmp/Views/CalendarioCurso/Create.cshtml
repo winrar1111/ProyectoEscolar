@@ -1,0 +1,67 @@
+﻿@model WebApplication6.Models.CalendarioCurso
+
+@{
+    Layout = null;
+}
+<div class="container">
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="text-center">Añadir Clase al calendario</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Periodo, "Hora", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_Periodo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Periodo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_CursoAsignatura, "Asignatura", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_CursoAsignatura", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_CursoAsignatura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 text-md-center">
+                    <input type="submit" value="Guardar" class="btn btn-success" id="Save2" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<button id="Save"> 222</button>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script>
+    $("#Save").click(function () {
+        alert("test");
+        url: "@Url.Action("Test", "CalendarioCurso")";
+        Id_Periodos=$("input[name='Id_Periodo']").val();
+        Id_CursoA=$("input[name='Id_CursoAsignatura']").val();
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Test", "CalendarioCurso")",
+        content: "application/json; charset=utf-8",
+        dataType: "json",
+         data: { Id_Periodo: Id_Periodos, Id_CursoAsignatura=Id_CursoA },
+        success: function(d) {
+            if (d.success == true)
+                alert('Has introducido un nuevo coche!!');
+            else {}
+        },
+        error: function (xhr, textStatus, errorThrown) {
+              alert('Error!!');
+        }
+         });
+    });
+</script>
