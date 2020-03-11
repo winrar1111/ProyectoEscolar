@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Caja.Context.TBESTUDIANTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_APELLIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_DIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_CORREO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DT_FECHA_NAC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_DOMICILIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_GENERO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodESTUDIANTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COD_MINED_ESTUDIANTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE_PADRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE_MADRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBANIOS_CURSAR.STR_CURSO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_APELLIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_DIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_CORREO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DT_FECHA_NAC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_DOMICILIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_GENERO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodESTUDIANTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_MINED_ESTUDIANTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_NOMBRE_PADRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STR_NOMBRE_MADRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBANIOS_CURSAR.STR_CURSO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_estudiante }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_estudiante }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_estudiante })
+        </td>
+    </tr>
+}
+
+</table>

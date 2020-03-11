@@ -1,0 +1,130 @@
+﻿@model Caja.Context.PAGO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PAGO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaTransaccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaTransaccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreEstudiante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreEstudiante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellidoEstudiante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellidoEstudiante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pagoAbonado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pagoAbonado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.equivalencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equivalencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAJA.numCaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAJA.numCaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAJERO.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAJERO.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONCEPTOSPAGO.ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONCEPTOSPAGO.ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO1.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO1.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONEDA1.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONEDA1.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBESTUDIANTE.STR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBESTUDIANTE.STR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPODEPAGO.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPODEPAGO.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model Caja.Context.TBANIOS_CURSAR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBANIOS_CURSAR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_CURSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_CURSO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_CURSO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

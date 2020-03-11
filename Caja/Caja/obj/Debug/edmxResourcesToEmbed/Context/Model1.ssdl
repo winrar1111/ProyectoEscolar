@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PRUEBAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CAJA">
+    <Key>
+      <PropertyRef Name="idCaja" />
+    </Key>
+    <Property Name="idCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numCaja" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CAJERO">
+    <Key>
+      <PropertyRef Name="idCajero" />
+    </Key>
+    <Property Name="idCajero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numCajero" Type="int" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CONCEPTOSPAGO">
+    <Key>
+      <PropertyRef Name="idConcepto" />
+    </Key>
+    <Property Name="idConcepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreConcepto" Type="int" />
+    <Property Name="monto" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="mes" Type="int" />
+    <Property Name="ano" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="EQUIVALENCIA">
+    <Key>
+      <PropertyRef Name="idEquivalencia" />
+    </Key>
+    <Property Name="idEquivalencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="monto" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="fecha" Type="date" />
+  </EntityType>
+  <EntityType Name="ESTADO">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MES">
+    <Key>
+      <PropertyRef Name="idMes" />
+    </Key>
+    <Property Name="idMes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreMes" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="MONEDA">
+    <Key>
+      <PropertyRef Name="idMoneda" />
+    </Key>
+    <Property Name="idMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PAGO">
+    <Key>
+      <PropertyRef Name="idPago" />
+    </Key>
+    <Property Name="idPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaTransaccion" Type="date" />
+    <Property Name="idCajero" Type="int" />
+    <Property Name="idCaja" Type="int" />
+    <Property Name="idEstudiante" Type="int" />
+    <Property Name="nombreEstudiante" Type="nvarchar" MaxLength="200" />
+    <Property Name="apellidoEstudiante" Type="nvarchar" MaxLength="200" />
+    <Property Name="conceptoPago" Type="int" />
+    <Property Name="tipoPago" Type="int" />
+    <Property Name="moneda" Type="int" />
+    <Property Name="pagoAbonado" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="equivalencia" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="balance" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="estado" Type="int" />
+    <Property Name="mora" Type="decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="TBANIOS_CURSAR">
+    <Key>
+      <PropertyRef Name="ID_CURSO" />
+    </Key>
+    <Property Name="ID_CURSO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STR_CURSO" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TBESTUDIANTE">
+    <Key>
+      <PropertyRef Name="id_estudiante" />
+    </Key>
+    <Property Name="id_estudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STR_NOMBRE" Type="nvarchar" MaxLength="200" />
+    <Property Name="STR_APELLIDO" Type="nvarchar" MaxLength="200" />
+    <Property Name="STR_DIRECCION" Type="nvarchar" MaxLength="200" />
+    <Property Name="STR_CORREO" Type="nvarchar" MaxLength="100" />
+    <Property Name="DT_FECHA_NAC" Type="date" />
+    <Property Name="STR_DOMICILIO" Type="nvarchar" MaxLength="200" />
+    <Property Name="STR_TELEFONO" Type="nvarchar" MaxLength="20" />
+    <Property Name="STR_GENERO" Type="nvarchar" MaxLength="200" />
+    <Property Name="CodESTUDIANTE" Type="nvarchar" MaxLength="200" />
+    <Property Name="COD_MINED_ESTUDIANTE" Type="nvarchar" MaxLength="20" />
+    <Property Name="STR_NOMBRE_PADRE" Type="nvarchar" MaxLength="200" />
+    <Property Name="STR_NOMBRE_MADRE" Type="nvarchar" MaxLength="200" />
+    <Property Name="numAÑO_EN_CURSO" Type="int" />
+  </EntityType>
+  <EntityType Name="TIPOCONCEPTO">
+    <Key>
+      <PropertyRef Name="idConcepto" />
+    </Key>
+    <Property Name="idConcepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreConcepto" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TIPODEPAGO">
+    <Key>
+      <PropertyRef Name="idTipo" />
+    </Key>
+    <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK__TBESTUDIA__numAÑ__3A81B327">
+    <End Role="TBANIOS_CURSAR" Type="Self.TBANIOS_CURSAR" Multiplicity="0..1" />
+    <End Role="TBESTUDIANTE" Type="Self.TBESTUDIANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBANIOS_CURSAR">
+        <PropertyRef Name="ID_CURSO" />
+      </Principal>
+      <Dependent Role="TBESTUDIANTE">
+        <PropertyRef Name="numAÑO_EN_CURSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_Caja">
+    <End Role="CAJA" Type="Self.CAJA" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAJA">
+        <PropertyRef Name="idCaja" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="idCaja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_Cajero">
+    <End Role="CAJERO" Type="Self.CAJERO" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAJERO">
+        <PropertyRef Name="idCajero" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="idCajero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_ConceptoPago">
+    <End Role="CONCEPTOSPAGO" Type="Self.CONCEPTOSPAGO" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONCEPTOSPAGO">
+        <PropertyRef Name="idConcepto" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="conceptoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_estado">
+    <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_Estudiante">
+    <End Role="TBESTUDIANTE" Type="Self.TBESTUDIANTE" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBESTUDIANTE">
+        <PropertyRef Name="id_estudiante" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="idEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_moneda">
+    <End Role="MONEDA" Type="Self.MONEDA" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MONEDA">
+        <PropertyRef Name="idMoneda" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="moneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_tipoPago">
+    <End Role="TIPODEPAGO" Type="Self.TIPODEPAGO" Multiplicity="0..1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPODEPAGO">
+        <PropertyRef Name="idTipo" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="tipoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PRUEBAModelStoreContainer">
+    <EntitySet Name="CAJA" EntityType="Self.CAJA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAJERO" EntityType="Self.CAJERO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONCEPTOSPAGO" EntityType="Self.CONCEPTOSPAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EQUIVALENCIA" EntityType="Self.EQUIVALENCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MES" EntityType="Self.MES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MONEDA" EntityType="Self.MONEDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBANIOS_CURSAR" EntityType="Self.TBANIOS_CURSAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBESTUDIANTE" EntityType="Self.TBESTUDIANTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPOCONCEPTO" EntityType="Self.TIPOCONCEPTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPODEPAGO" EntityType="Self.TIPODEPAGO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TBESTUDIA__numAÑ__3A81B327" Association="Self.FK__TBESTUDIA__numAÑ__3A81B327">
+      <End Role="TBANIOS_CURSAR" EntitySet="TBANIOS_CURSAR" />
+      <End Role="TBESTUDIANTE" EntitySet="TBESTUDIANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_Caja" Association="Self.FK_PAGO_Caja">
+      <End Role="CAJA" EntitySet="CAJA" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_Cajero" Association="Self.FK_PAGO_Cajero">
+      <End Role="CAJERO" EntitySet="CAJERO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_ConceptoPago" Association="Self.FK_PAGO_ConceptoPago">
+      <End Role="CONCEPTOSPAGO" EntitySet="CONCEPTOSPAGO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_estado" Association="Self.FK_PAGO_estado">
+      <End Role="ESTADO" EntitySet="ESTADO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_Estudiante" Association="Self.FK_PAGO_Estudiante">
+      <End Role="TBESTUDIANTE" EntitySet="TBESTUDIANTE" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_moneda" Association="Self.FK_PAGO_moneda">
+      <End Role="MONEDA" EntitySet="MONEDA" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_tipoPago" Association="Self.FK_PAGO_tipoPago">
+      <End Role="TIPODEPAGO" EntitySet="TIPODEPAGO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

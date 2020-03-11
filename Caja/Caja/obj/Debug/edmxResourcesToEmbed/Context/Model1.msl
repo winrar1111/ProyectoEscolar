@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PRUEBAModelStoreContainer" CdmEntityContainer="PRUEBAEntities">
+    <EntitySetMapping Name="CAJAs">
+      <EntityTypeMapping TypeName="PRUEBAModel.CAJA">
+        <MappingFragment StoreEntitySet="CAJA">
+          <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+          <ScalarProperty Name="numCaja" ColumnName="numCaja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAJEROes">
+      <EntityTypeMapping TypeName="PRUEBAModel.CAJERO">
+        <MappingFragment StoreEntitySet="CAJERO">
+          <ScalarProperty Name="idCajero" ColumnName="idCajero" />
+          <ScalarProperty Name="numCajero" ColumnName="numCajero" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONCEPTOSPAGOes">
+      <EntityTypeMapping TypeName="PRUEBAModel.CONCEPTOSPAGO">
+        <MappingFragment StoreEntitySet="CONCEPTOSPAGO">
+          <ScalarProperty Name="idConcepto" ColumnName="idConcepto" />
+          <ScalarProperty Name="nombreConcepto" ColumnName="nombreConcepto" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="mes" ColumnName="mes" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIVALENCIAs">
+      <EntityTypeMapping TypeName="PRUEBAModel.EQUIVALENCIA">
+        <MappingFragment StoreEntitySet="EQUIVALENCIA">
+          <ScalarProperty Name="idEquivalencia" ColumnName="idEquivalencia" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOes">
+      <EntityTypeMapping TypeName="PRUEBAModel.ESTADO">
+        <MappingFragment StoreEntitySet="ESTADO">
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MES">
+      <EntityTypeMapping TypeName="PRUEBAModel.ME">
+        <MappingFragment StoreEntitySet="MES">
+          <ScalarProperty Name="idMes" ColumnName="idMes" />
+          <ScalarProperty Name="nombreMes" ColumnName="nombreMes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MONEDAs">
+      <EntityTypeMapping TypeName="PRUEBAModel.MONEDA">
+        <MappingFragment StoreEntitySet="MONEDA">
+          <ScalarProperty Name="idMoneda" ColumnName="idMoneda" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAGOes">
+      <EntityTypeMapping TypeName="PRUEBAModel.PAGO">
+        <MappingFragment StoreEntitySet="PAGO">
+          <ScalarProperty Name="idPago" ColumnName="idPago" />
+          <ScalarProperty Name="fechaTransaccion" ColumnName="fechaTransaccion" />
+          <ScalarProperty Name="idCajero" ColumnName="idCajero" />
+          <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+          <ScalarProperty Name="idEstudiante" ColumnName="idEstudiante" />
+          <ScalarProperty Name="nombreEstudiante" ColumnName="nombreEstudiante" />
+          <ScalarProperty Name="apellidoEstudiante" ColumnName="apellidoEstudiante" />
+          <ScalarProperty Name="conceptoPago" ColumnName="conceptoPago" />
+          <ScalarProperty Name="tipoPago" ColumnName="tipoPago" />
+          <ScalarProperty Name="moneda" ColumnName="moneda" />
+          <ScalarProperty Name="pagoAbonado" ColumnName="pagoAbonado" />
+          <ScalarProperty Name="equivalencia" ColumnName="equivalencia" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="mora" ColumnName="mora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBANIOS_CURSAR">
+      <EntityTypeMapping TypeName="PRUEBAModel.TBANIOS_CURSAR">
+        <MappingFragment StoreEntitySet="TBANIOS_CURSAR">
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+          <ScalarProperty Name="STR_CURSO" ColumnName="STR_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBESTUDIANTEs">
+      <EntityTypeMapping TypeName="PRUEBAModel.TBESTUDIANTE">
+        <MappingFragment StoreEntitySet="TBESTUDIANTE">
+          <ScalarProperty Name="id_estudiante" ColumnName="id_estudiante" />
+          <ScalarProperty Name="STR_NOMBRE" ColumnName="STR_NOMBRE" />
+          <ScalarProperty Name="STR_APELLIDO" ColumnName="STR_APELLIDO" />
+          <ScalarProperty Name="STR_DIRECCION" ColumnName="STR_DIRECCION" />
+          <ScalarProperty Name="STR_CORREO" ColumnName="STR_CORREO" />
+          <ScalarProperty Name="DT_FECHA_NAC" ColumnName="DT_FECHA_NAC" />
+          <ScalarProperty Name="STR_DOMICILIO" ColumnName="STR_DOMICILIO" />
+          <ScalarProperty Name="STR_TELEFONO" ColumnName="STR_TELEFONO" />
+          <ScalarProperty Name="STR_GENERO" ColumnName="STR_GENERO" />
+          <ScalarProperty Name="CodESTUDIANTE" ColumnName="CodESTUDIANTE" />
+          <ScalarProperty Name="COD_MINED_ESTUDIANTE" ColumnName="COD_MINED_ESTUDIANTE" />
+          <ScalarProperty Name="STR_NOMBRE_PADRE" ColumnName="STR_NOMBRE_PADRE" />
+          <ScalarProperty Name="STR_NOMBRE_MADRE" ColumnName="STR_NOMBRE_MADRE" />
+          <ScalarProperty Name="numAÑO_EN_CURSO" ColumnName="numAÑO_EN_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOCONCEPTOes">
+      <EntityTypeMapping TypeName="PRUEBAModel.TIPOCONCEPTO">
+        <MappingFragment StoreEntitySet="TIPOCONCEPTO">
+          <ScalarProperty Name="idConcepto" ColumnName="idConcepto" />
+          <ScalarProperty Name="nombreConcepto" ColumnName="nombreConcepto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPODEPAGOes">
+      <EntityTypeMapping TypeName="PRUEBAModel.TIPODEPAGO">
+        <MappingFragment StoreEntitySet="TIPODEPAGO">
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

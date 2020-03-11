@@ -1,0 +1,26 @@
+﻿@model Caja.Context.CAJA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CAJA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numCaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numCaja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCaja }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

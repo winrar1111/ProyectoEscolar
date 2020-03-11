@@ -1,0 +1,122 @@
+﻿@model Caja.Context.TBESTUDIANTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TBESTUDIANTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_CORREO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DT_FECHA_NAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DT_FECHA_NAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_DOMICILIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_DOMICILIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_GENERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_GENERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodESTUDIANTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodESTUDIANTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COD_MINED_ESTUDIANTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COD_MINED_ESTUDIANTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE_PADRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_NOMBRE_PADRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STR_NOMBRE_MADRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STR_NOMBRE_MADRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBANIOS_CURSAR.STR_CURSO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBANIOS_CURSAR.STR_CURSO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_estudiante }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
